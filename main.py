@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 api = Api(app)
 
-parser = reqparse.RequestParser
+parser = reqparse.RequestParser()
 
 
 class Quotes(Resource):
@@ -25,7 +25,7 @@ class Quotes(Resource):
 
     def post(self):
         parser.add_argument('quote', type=str)
-        args = parse.parse_args()
+        args = parser.parse_args()
 
         return {
            'status': True,
@@ -33,7 +33,7 @@ class Quotes(Resource):
     }
 
     def put(self, id):
-        parse.add_argument('quotes', type=str)
+        parser.add_argument('quotes', type=str)
         args = parser.parse_args()
 
         return {
